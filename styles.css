@@ -1,0 +1,32 @@
+*{box-sizing:border-box}
+:root{
+  --bg:#0b0f14; --fg:#e6edf3; --muted:#9fb0bf; --card:#121821; --accent:#76b3ff;
+  --chip:#1a2330; --border:#223042;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial}
+.topbar{position:sticky;top:0;background:linear-gradient(180deg,#0b0f14 0%, #0b0f14ee 80%, #0b0f1400 100%);backdrop-filter: blur(6px);z-index:10;padding:12px 16px;border-bottom:1px solid var(--border)}
+.topbar h1{margin:0 0 8px 0;font-size:20px;letter-spacing:.5px}
+.search-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search-row input[type=search]{flex:1;min-width:220px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:#0f141b;color:var(--fg)}
+.search-row select, .filters select{padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:#0f141b;color:var(--fg)}
+.ghost{background:transparent;border:1px solid var(--border);color:var(--fg);padding:10px 12px;border-radius:8px;cursor:pointer}
+.ghost:hover{border-color:var(--accent)}
+.filters{margin-top:8px}
+.filters summary{cursor:pointer;color:var(--muted)}
+.filters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:8px}
+.checks{display:flex;flex-direction:column;gap:6px;padding:6px 0}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;padding:12px 16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-size:16px}
+.meta{color:var(--muted);font-size:12px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.badge{font-size:11px;padding:4px 8px;background:var(--chip);border:1px solid var(--border);border-radius:999px}
+.icon{background:transparent;border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--fg)}
+dialog{border:none;border-radius:12px;padding:0;max-width:720px;width:96vw}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.spell-card-full{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+.spell-card-full header{display:flex;justify-content:space-between;align-items:center}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+.bottombar{position:sticky;bottom:0;padding:8px 16px;background:linear-gradient(0deg,#0b0f14 0%, #0b0f14ee 80%, #0b0f1400 100%);border-top:1px solid var(--border)}
+small{color:var(--muted)}

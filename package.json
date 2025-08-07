@@ -1,0 +1,13 @@
+{
+  "name": "grimoire-srd",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "node ./scripts/fetch_srd_open5e.mjs",
+    "build": "echo 'static build ready'",
+    "start": "npx serve -l 8080 ."
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

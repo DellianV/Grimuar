@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+  command = "npm ci && npm run prebuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

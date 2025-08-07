@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Гримуар SRD</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#0b0f14">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Гримуар SRD</h1>
+    <div class="search-row">
+      <input id="search" type="search" placeholder="Поиск по названию и тексту…" autocomplete="off">
+      <select id="sort">
+        <option value="level-asc">Сначала низкие уровни</option>
+        <option value="level-desc">Сначала высокие уровни</option>
+        <option value="name-asc">По алфавиту (А→Я / A→Z)</option>
+        <option value="name-desc">По алфавиту (Я→А / Z→A)</option>
+        <option value="time-asc">По времени накладывания</option>
+      </select>
+      <button id="btn-favs" class="ghost">Избранное</button>
+      <button id="btn-dm" class="ghost">DM Presets</button>
+      <button id="btn-import" class="ghost">Импорт</button>
+      <button id="btn-export" class="ghost">Экспорт</button>
+      <button id="btn-clear" class="ghost">Сброс</button>
+    </div>
+    <details class="filters">
+      <summary>Фильтры</summary>
+      <div class="filters-grid">
+        <div>
+          <label>Уровень</label>
+          <select id="level" multiple size="4">
+            <option value="0">0 (трюк)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+        <div>
+          <label>Школа</label>
+          <select id="school" multiple size="6">
+            <option value="abjuration">Ограждение</option>
+            <option value="conjuration">Вызов</option>
+            <option value="divination">Прорицание</option>
+            <option value="enchantment">Очарование</option>
+            <option value="evocation">Воплощение</option>
+            <option value="illusion">Иллюзия</option>
+            <option value="necromancy">Некромантия</option>
+            <option value="transmutation">Преобразование</option>
+          </select>
+        </div>
+        <div>
+          <label>Класс</label>
+          <select id="classes" multiple size="6">
+            <option value="bard">Бард</option>
+            <option value="cleric">Жрец</option>
+            <option value="druid">Друид</option>
+            <option value="paladin">Паладин</option>
+            <option value="ranger">Следопыт</option>
+            <option value="sorcerer">Колдун (чародей)</option>
+            <option value="warlock">Колдун (ведьмак)</option>
+            <option value="wizard">Волшебник</option>
+            <option value="artificer">Изобретатель</option>
+          </select>
+        </div>
+        <div>
+          <label>Теги</label>
+          <select id="tags" multiple size="8">
+            <option>Атакующие</option>
+            <option>Защитные</option>
+            <option>Социальные</option>
+            <option>Контроль</option>
+            <option>Исцеляющие</option>
+            <option>Разведка</option>
+            <option>Перемещение</option>
+            <option>Ютилити</option>
+          </select>
+        </div>
+        <div>
+          <label>Прочее</label>
+          <div class="checks">
+            <label><input type="checkbox" id="concentration"> Концентрация</label>
+            <label><input type="checkbox" id="ritual"> Ритуал</label>
+            <label><input type="checkbox" id="favorites"> Только избранное</label>
+          </div>
+        </div>
+        <div>
+          <label>Компоненты</label>
+          <div class="checks">
+            <label><input type="checkbox" id="compV"> Вербальные</label>
+            <label><input type="checkbox" id="compS"> Соматические</label>
+            <label><input type="checkbox" id="compM"> Материальные</label>
+          </div>
+        </div>
+      </div>
+    </details>
+  </header>
+
+  <main>
+    <div id="list" class="list"></div>
+    <dialog id="modal">
+      <article class="spell-card-full">
+        <header>
+          <h2 id="m-title"></h2>
+          <button id="m-close" class="icon" title="Закрыть">✕</button>
+        </header>
+        <div class="meta">
+          <span id="m-level"></span> · <span id="m-school"></span> · <span id="m-time"></span> · <span id="m-range"></span> · <span id="m-duration"></span>
+        </div>
+        <div class="badges" id="m-badges"></div>
+        <p id="m-desc"></p>
+        <div id="m-higher"></div>
+        <footer class="modal-actions">
+          <button id="m-fav" class="ghost">★ В избранное</button>
+          <button id="m-copy" class="ghost">Копировать</button>
+        </footer>
+      </article>
+    </dialog>
+  </main>
+
+  <footer class="bottombar">
+    <small>Работает офлайн. Данные сохраняются на устройстве. Источник заклинаний: SRD 5.1 (CC BY 4.0).</small>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
+</body>
+</html>
